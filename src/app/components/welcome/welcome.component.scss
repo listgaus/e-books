@@ -1,0 +1,24 @@
+.welcome-wrapper{
+  margin: calc(50vh - 8rem) auto;
+  width: 20rem;
+  background: rgba(0,0,0,0.3)}
+
+input{
+  margin: 2rem auto;
+}
+
+.bg{
+  position: absolute;
+  top: 0;
+  //padding-top: 50%;
+  //padding-left: 50%;
+  /* The image used */
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/5a/Books_HD_%288314929977%29.jpg");
+  /* Full height */
+  height: 100%;
+  width: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
