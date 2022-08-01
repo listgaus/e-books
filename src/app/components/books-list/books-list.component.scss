@@ -1,0 +1,32 @@
+
+.books-list {
+display: flex;
+flex-wrap: wrap;
+align-content: center;
+justify-content: center;
+  .book {
+        &:hover{
+          cursor: pointer;
+        }
+      }
+}
+
+.loading {
+    height: 100px;
+    padding-left: 40%;
+    margin-top: 5%;
+  }
+
+
+.modal-close-btn {
+  right: 0;
+  padding: 20px;
+}
+.authors{
+  color: green;
+  font-weight: 400;
+  margin-left: -1px;
+}
+
+
+

@@ -1,1 +1,23 @@
-<p>book works!</p>
+<div class="single-book-container" *ngIf="book?.volumeInfo?.imageLinks?.thumbnail">
+  <div class="book-body">
+    <div class="book-image">
+      <img class="card-img-top" *ngIf="book.volumeInfo.imageLinks.thumbnail.length>5"
+           [src]="book.volumeInfo.imageLinks.thumbnail"
+           alt="Card image cap">
+      <img class="card-img-top" *ngIf="!book.volumeInfo.imageLinks.thumbnail || book.volumeInfo.imageLinks.thumbnail == ' '"
+           src="https://upload.wikimedia.org/wikipedia/commons/b/b9/No_Cover.jpg"
+           alt="Card image cap">
+    </div>
+    <div class="book-info">
+      <p class="title">{{book.volumeInfo.title | booktitle | titlecase }}</p>
+      <p class="authors"> By: {{book.volumeInfo.authors}}.</p>
+      <p class="authors">Published: {{book.volumeInfo.publishedDate | date:'MM/dd/yyyy'}}</p>
+      <p class="description">{{book.volumeInfo.infoLink| truncate}}</p>
+    </div>
+    <div class="more-info-button">
+      <i class="fas fa-plus"></i>
+    </div>
+  </div>
+</div>
+
+

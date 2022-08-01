@@ -1,0 +1,56 @@
+.single-book-container {
+  margin: 35px;
+  height: 200px;
+  width: 400px;
+  background-color: whitesmoke;
+  outline: 1px solid lightgray;
+  border-radius: 4px;
+  .book-body {
+    padding-top: 5px;
+    .book-image {
+      width: 30%;
+      float: left;
+      .card-img-top {
+        height: 200px;
+        top: -40px;
+        position: relative;
+        margin-left: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+    }
+    .book-info {
+      width: 54%;
+      float: left;
+      height: 200px;
+      margin-left: 10%;
+      .title {
+        font-weight: bold;
+        color: gray;
+        line-height: 17px;
+        margin-top: 5px;
+      }
+      .authors {
+        font-size: smaller;
+        font-weight: 550;
+        color: lightgray;
+        line-height: 17px;
+        margin-top: -15px
+      }
+      .published-date {
+        font-size: smaller;
+        color: lightgray;
+        line-height: 17px;
+      }
+      .description {
+        font-size: smaller;
+        word-break: break-all;
+        color: lightgray;
+        line-height: 16px;
+      }
+    }
+    .more-info-button {
+      width: 2%;
+      float: left;
+    }
+  }
+}

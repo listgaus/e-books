@@ -1,1 +1,30 @@
-<p>main works!</p>
+<ul ngbNav #nav="ngbNav" class="booksnav nav-tabs align-items-center justify-content-end">
+  <li class="flex-grow-1 w-50 p-2">
+    Hi, {{userName$ | async | titlecase }}
+  </li>
+  <li ngbNavItem="0">
+    <a ngbNavLink>Search Books</a>
+    <ng-template ngbNavContent>
+      <app-search-bar
+        (valueChange)="searchBooks($event)">
+      </app-search-bar>
+      <app-books-list
+        [isLoading$]="isLoading$"
+        [books$]="result$"
+        [selectedBook$]="selectedBook$"
+        (addSelectedBookToWishlist)="addSelectedBookToWishlist()"
+        (updateSelectedBook)="updateSelectedBook($event)">
+      </app-books-list>
+    </ng-template>
+  </li>
+  <li ngbNavItem="1">
+    <a ngbNavLink>Wishlist</a>
+    <ng-template ngbNavContent>
+      <app-wishlist [books$]="wishlist$"></app-wishlist>
+    </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>
+
+
+

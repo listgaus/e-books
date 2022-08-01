@@ -1,1 +1,8 @@
-<p>search-bar works!</p>
+<div class="search-container">
+<div  [formGroup]="searchForm">
+  <div class="form-group has-search">
+    <span class="form-control-feedback"><i class="fa fa-search"></i></span>
+    <input type="text" formControlName="search" required class="form-control" placeholder="Search Books">
+  </div>
+</div >
+</div>
