@@ -1,0 +1,5 @@
+<div class="wishlist">
+  <div class="book" *ngFor="let book of books$ | async">
+    <app-book *ngIf="book !== null" [book]="book"></app-book>
+  </div>
+</div>

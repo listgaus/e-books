@@ -107,7 +107,7 @@ export class AppState {
       selectedBook: newEl,
     })
   }
-
+//TODO
   @Action(RemoveFromWishlist)
   async updateSelectCategory({getState, patchState}: StateContext<AppStateModel>, {bookToRemove}: RemoveFromWishlist) {
     // const  newWishList = getState().wishlist.filter(book => book.id === bookToRemove.id);

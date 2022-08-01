@@ -1,0 +1,39 @@
+.book-image{
+  width: 35%;
+  img {
+    border-radius: 3px;
+    box-shadow: 5px 5px 8px grey, 1px 4px 0px grey;
+    margin: 4px;
+  }
+}
+.book-info {
+  width: 65%;
+  height: 60vh;
+  overflow: auto;
+}
+.book-body{
+  height: 60vh;
+}
+
+.description {
+  text-align: justify;
+  line-height: 1.4;
+  font-weight: 500;
+  text-shadow: 1px 1px beige;
+}
+.numbers-info{
+  padding: 10px;
+  font-weight: 500;
+  line-height: 1;
+  .wishlist{
+    font-weight: lighter;
+    i{
+      margin-right: 3px;
+    }
+    &.add {
+      &:hover{
+        cursor: cell  ;
+      }
+    }
+  }
+}
