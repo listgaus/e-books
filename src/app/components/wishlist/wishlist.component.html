@@ -1,5 +1,8 @@
 <div class="d-flex justify-content-center">
-<h2 class="m-2">This is your wishlist, {{name$ | async}}</h2>
+<h2 *ngIf="(wishlist$ | async).length !== 0; else itemsGreet" class="m-2">{{name$ | async}}'s book wishlist</h2>
+  <ng-template #itemsGreet>
+    <h2 class="m-2">Your wishlist is empty, {{name$ | async}}, search books and fill it up!</h2>
+  </ng-template>
 </div>
 <div class="wishlist">
   <div class="book" *ngFor="let book of wishlist$ | async">

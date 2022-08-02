@@ -16,7 +16,8 @@
     </div>
     <div class="more-info-button">
       <button *ngIf="!isWishlist" class="btn"><i class="fas fa-info"></i></button>
-      <button *ngIf="isWishlist" class="btn" (click)="remove($event)"><i class="fas fa-xmark"></i></button>
+      <button *ngIf="isWishlist" class="btn" (click)="remove($event)" data-toggle="tooltip" data-placement="left" title="Remove from wishlist"
+      ><i class="fas fa-xmark"></i></button>
     </div>
   </div>
 </div>
