@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {GoogleBook} from "../../../assets/models/data-model";
-import {Store} from "@ngxs/store";
-import {RemoveWishlistItem} from "../../store/app.actions";
 
 @Component({
   selector: 'app-book',
@@ -10,13 +8,11 @@ import {RemoveWishlistItem} from "../../store/app.actions";
 })
 export class BookComponent {
   @Input() book: GoogleBook;
-  @Input() isWishlist?: boolean;
+  @Input() isWishlist: boolean;
   @Output() removeBook: EventEmitter<string> = new EventEmitter<string>()
-  @Output() openBookInfo: EventEmitter<void> = new EventEmitter<void>()
-  constructor(private store: Store) { }
+  constructor() { }
 
-  remove($event){
-    $event.preventDefault()
-    this.store.dispatch(new RemoveWishlistItem(this.book.id))
+  remove(){
+    this.removeBook.emit(this.book.id)
   }
 }
