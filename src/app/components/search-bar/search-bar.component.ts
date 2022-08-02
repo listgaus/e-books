@@ -20,6 +20,7 @@ export class SearchBarComponent implements OnInit{
       debounceTime(1000),
       distinctUntilChanged(),
     ).subscribe( value => {
+      console.log('search value', value)
         if (value === undefined) return
         this.valueChange.emit(value)
       }

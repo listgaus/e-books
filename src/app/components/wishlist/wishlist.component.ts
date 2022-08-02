@@ -1,22 +1,22 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {GoogleBook} from "../../../assets/models/data-model";
+import {Select, Store} from "@ngxs/store";
+import {AppState} from "../../store/app.state";
+import {RemoveWishlistItem} from "../../store/app.actions";
 
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.scss']
 })
-export class WishlistComponent implements OnInit {
-  @Input() books$: Observable<GoogleBook[]>
-  @Output() removeFromWishList: EventEmitter<string> = new EventEmitter<string>()
+export class WishlistComponent {
+  @Select(AppState.wishlist) wishlist$: Observable<GoogleBook[]>;
+  @Select(AppState.username) name$: Observable<string>;
+  constructor(private store: Store) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.books$.subscribe(
-      b => console.log(b)
-    )
+  RemoveWishlistItem(bookId){
+    this.store.dispatch(new RemoveWishlistItem(bookId))
   }
 
 }

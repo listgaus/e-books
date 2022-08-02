@@ -2,7 +2,7 @@
   width: 35%;
   img {
     border-radius: 3px;
-    box-shadow: 5px 5px 8px grey, 1px 4px 0px grey;
+    box-shadow: 5px 5px 8px grey, 1px 4px 0 grey;
     margin: 4px;
   }
 }
@@ -30,9 +30,14 @@
     i{
       margin-right: 3px;
     }
-    &.add {
+    .add {
       &:hover{
-        cursor: cell  ;
+        cursor: cell;
+      }
+    }
+    .added {
+      &:hover{
+        background-color: transparent;
       }
     }
   }

@@ -1,51 +1,52 @@
-import {Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Select, Store} from "@ngxs/store";
 import {AppState} from "../../store/app.state";
-import {Observable} from "rxjs";
+import {distinctUntilChanged, Observable, share} from "rxjs";
+import {GoogleBook} from "../../../assets/models/data-model";
 import {
-  AddToWishlist,
-  ClearSearchResults,
-  SearchBooks,
+  AddWishlistItem,
+  ClearSearchResults, SearchBooks,
   SetLoadingState,
   SetSearchValue,
   setSelectedBook
 } from "../../store/app.actions";
-import {GoogleBook} from "../../../assets/models/data-model";
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss']
 })
-export class MainComponent {
-  @Select(AppState.username) userName$: Observable<string>;
+export class SearchComponent implements OnInit {
   @Select(AppState.searchResults) result$: Observable<GoogleBook[]>;
   @Select(AppState.searchTerm) searchTerm: Observable<string>;
   @Select(AppState.isLoading) isLoading$: Observable<boolean>;
   @Select(AppState.selectedBook) selectedBook$: Observable<GoogleBook>;
-  @Select(AppState.wishlist) wishlist$: Observable<GoogleBook[]>;
-
   constructor(private store: Store) { }
 
+  ngOnInit(): void {
+    this.selectedBook$.pipe(
+      share(),
+      distinctUntilChanged()
+    )
+  }
+
   searchBooks(searchTerm){
-    if(searchTerm !== true) return
     searchTerm === '' ?
       this.store.dispatch(new ClearSearchResults())
-    :
+      :
       this.store.dispatch([
-      new SetSearchValue(searchTerm),
-      new SetLoadingState(true),
-      new SearchBooks(searchTerm)]
-    )
+        new SetSearchValue(searchTerm),
+        new SetLoadingState(true),
+        new SearchBooks(searchTerm)]
+      )
   }
 
   updateSelectedBook(book){
     this.store.dispatch(new setSelectedBook(book))
   }
 
-  addSelectedBookToWishlist(){
-    this.store.dispatch(new AddToWishlist())
+  addToWishlist(){
+    this.store.dispatch(new AddWishlistItem())
   }
 
 }
-

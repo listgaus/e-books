@@ -1,6 +1,6 @@
 <div class="books-list">
-  <div class="book" *ngFor="let book of books$ | async">
-    <app-book [book]="book" (click)="openModal(template, book)"></app-book>
+  <div class="book" *ngFor="let book of books$ | async" (click)="openModal(template, book)">
+    <app-book [book]="book" [isWishlist]="false"></app-book>
   </div>
 </div>
 
@@ -9,7 +9,7 @@
 </div>
 
 <ng-template #template>
-  <div class="modal-header flex-column align-items-start">
+  <div class="modal-header flex-column align-items-start" *ngIf="(selectedBook$ | async) !== undefined">
     <h3 class="title">{{(selectedBook$ | async).volumeInfo?.title | booktitle | titlecase }}</h3>
     <h5 class="authors"> By: {{(selectedBook$ | async).volumeInfo?.authors}}.</h5>
     <button type="button" class="close btn-close position-absolute top-0 modal-close-btn" aria-label="Close" (click)="modalRef?.hide()">

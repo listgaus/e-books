@@ -10,9 +10,9 @@
         <p class="authors">Published: {{(book$ | async).volumeInfo.publishedDate | date:'YYYY'}}</p>
         <p class="authors">Pages: {{(book$ | async).volumeInfo.pageCount}}.</p>
         <p class="authors">ISBN: {{(book$ | async).volumeInfo.industryIdentifiers[0].identifier}}</p>
-        <button class="btn btn-outline-primary border-0" [disabled]="(book$ | async).inWishlist" (click)="addToWishlist()">
-          <span *ngIf="!(book$ | async).inWishlist" class="wishlist add"><i class="far fa-heart"></i>Add to wishlist</span>
-          <span *ngIf="(book$ | async).inWishlist" class="wishlist"><i class="fa fa-heart"></i>Added to wishlist</span>
+        <button class="btn btn-outline-primary border-0 wishlist" [disabled]="(book$ | async).inWishlist" (click)="addToWishlist($event)">
+          <span *ngIf="!(book$ | async).inWishlist" class="add"><i class="far fa-heart"></i>Add to wishlist</span>
+          <span *ngIf="(book$ | async).inWishlist" class="added"><i class="fa fa-heart"></i>Added to wishlist</span>
         </button>
       </section>
     </div>
@@ -21,6 +21,4 @@
     </div>
   </div>
 
-  <div *ngIf="isLoading" class="spinner-border text-info position-absolute top-50 end-50" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
+

@@ -2,10 +2,14 @@ import {Action, Selector, State, StateContext} from '@ngxs/store';
 import {Injectable} from '@angular/core';
 import {AppStateModel} from "./state.model";
 import {
-  AddToWishlist, ClearSearchResults,
-  RemoveFromWishlist,
-  SearchBooks, SetLoadingState, SetSearchValue, setSelectedBook,
   SetUserName,
+  SetSearchValue,
+  SetLoadingState,
+  SearchBooks,
+  setSelectedBook,
+  AddWishlistItem,
+  RemoveWishlistItem,
+  ClearSearchResults,
 } from "./app.actions";
 import {GoogleBook} from "../../assets/models/data-model";
 import {ApiService} from "../services/api.service";
@@ -16,12 +20,13 @@ import {insertItem, patch} from "@ngxs/store/operators";
   defaults: {
     searchValue: '',
     searchResults: [],
-    username: undefined,
+    username: '',
     wishlist: [],
     isLoading: false,
     selectedBook: undefined
   }
 })
+
 @Injectable()
 
 export class AppState {
@@ -51,6 +56,10 @@ export class AppState {
   @Selector([AppState])
   static wishlist(state: AppStateModel): GoogleBook[] {
     return state.wishlist;
+  }
+  @Selector([AppState])
+  static wishlistCount(state: AppStateModel): number {
+    return state.wishlist.length;
   }
 
   //State Actions
@@ -85,21 +94,26 @@ export class AppState {
   }
   @Action(ClearSearchResults)
   async clearResults({patchState}:StateContext<AppStateModel>) {
-    patchState({searchResults: undefined})
+    patchState({searchResults: []})
   }
   //Wishlist
-  @Action(AddToWishlist)
+  @Action(RemoveWishlistItem)
+  async removeWishlistItem({getState, patchState}: StateContext<AppStateModel>, {bookId}: RemoveWishlistItem) {
+    const list = structuredClone(getState().wishlist);
+    const newWishList = list.filter(book => book.id !== bookId);
+    patchState({wishlist: [...newWishList]});
+  }
+  @Action(AddWishlistItem)
   async addToWishList({getState, patchState, setState} : StateContext<AppStateModel>) {
     const newEl = structuredClone(getState().selectedBook)
+    if(getState().wishlist.find(book => book.id === newEl.id)) return;
     const newResults = structuredClone(getState().searchResults);
-    if(newEl === true) {
-      const index = newResults.findIndex(o => o.id === newEl.id)
+    const index = newResults.findIndex(o => o.id === newEl.id)
       newEl.inWishlist = true
       newResults[index].inWishlist = true
-    }
     setState(
       patch({
-        wishlist: insertItem(newEl)
+        wishlist: insertItem(newEl, 1)
       })
     )
     patchState({
@@ -107,15 +121,9 @@ export class AppState {
       selectedBook: newEl,
     })
   }
-//TODO
-  @Action(RemoveFromWishlist)
-  async updateSelectCategory({getState, patchState}: StateContext<AppStateModel>, {bookToRemove}: RemoveFromWishlist) {
-    // const  newWishList = getState().wishlist.filter(book => book.id === bookToRemove.id);
-    // patchState({wishlist: [...getState().wishlist, bookToRemove]});
-  }
   //General
   @Action(ClearSearchResults)
   async initialize({patchState}:StateContext<AppStateModel>) {
-    patchState({searchResults: undefined, wishlist: undefined, searchValue: '', isLoading: false})
+    patchState({searchResults: [], wishlist: [], searchValue: '', isLoading: false})
   }
 }

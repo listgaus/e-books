@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Store} from "@ngxs/store";
-import {InitializeState, SetUserName} from "../../store/app.actions";
+import {ClearSearchResults, SetUserName} from "../../store/app.actions";
 
 
 @Component({
@@ -19,7 +19,7 @@ export class WelcomeComponent implements OnInit  {
   constructor(private router: Router, private store: Store) {}
 
   ngOnInit() {
-   this.store.dispatch(new InitializeState())
+   this.store.dispatch([new ClearSearchResults()])
   }
 
   get name() {
@@ -28,6 +28,6 @@ export class WelcomeComponent implements OnInit  {
 
   onSubmit() {
     this.store.dispatch(new SetUserName(this.userForm.get('name')?.value))
-    this.router.navigate(['/main']);
+    this.router.navigate(['/home']);
   }
 }

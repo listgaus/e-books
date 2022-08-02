@@ -1,0 +1,11 @@
+        <app-search-bar
+          (valueChange)="searchBooks($event)">
+        </app-search-bar>
+        <app-books-list
+          [isLoading$]="isLoading$"
+          [books$]="result$"
+          [selectedBook$]="selectedBook$"
+          (addWishlistItem)="addToWishlist()"
+          (updateSelectedBook)="updateSelectedBook($event)">
+        </app-books-list>
+

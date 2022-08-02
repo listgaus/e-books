@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {WelcomeComponent} from "./components/welcome/welcome.component";
-import {MainComponent} from "./components/main/main.component";
+import {HomeComponent} from "./components/home/home.component";
+import {SearchComponent} from "./components/search/search.component";
+import {WishlistComponent} from "./components/wishlist/wishlist.component";
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
 
 const routes: Routes = [
   { path: '',
@@ -13,12 +16,26 @@ const routes: Routes = [
     component: WelcomeComponent
   },
   {
-    path: 'main',
-    component: MainComponent
+    path: 'home',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        component: DashboardComponent
+      },
+      {
+        path: 'search',
+        component: SearchComponent
+      },
+      {
+        path: 'wishlist',
+        component: WishlistComponent
+      }
+    ]
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'home'
   }
 ];
 

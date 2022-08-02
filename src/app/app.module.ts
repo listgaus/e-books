@@ -7,7 +7,7 @@ import { BookComponent } from './components/book/book.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { MainComponent } from './components/main/main.component';
+import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxsModule} from "@ngxs/store";
@@ -22,6 +22,8 @@ import {NgxsStoragePluginModule} from "@ngxs/storage-plugin";
 import {PaginationModule} from "ngx-bootstrap/pagination";
 import {BsModalService, ModalModule} from "ngx-bootstrap/modal";
 import { BookInfoComponent } from './components/book-info/book-info.component';
+import { SearchComponent } from './components/search/search.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +32,13 @@ import { BookInfoComponent } from './components/book-info/book-info.component';
     SearchBarComponent,
     BooksListComponent,
     WelcomeComponent,
-    MainComponent,
+    HomeComponent,
     WishlistComponent,
     TruncatePipe,
     TitlePipe,
-    BookInfoComponent
+    BookInfoComponent,
+    SearchComponent,
+    DashboardComponent
   ],
   imports: [
     NgxsModule.forRoot([AppState]),

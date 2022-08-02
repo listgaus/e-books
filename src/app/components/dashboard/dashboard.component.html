@@ -1,0 +1,11 @@
+<div class="container-fluid bounceIn animated dasboard">
+    <div class="col-md-12 my-text dashboard-container flex-column">
+      <span> Welcome to the books library {{username$ | async | titlecase }},</span>
+      <div *ngIf="(count$ | async) === undefined || (count$ | async) === 0; else count">
+        <span> Your books wishlist is currently empty, <a routerLink="search">search</a> some books to begin </span>
+      </div>
+      <ng-template #count>
+        <span> Your books wishlist has {{count$ | async}} books!</span>
+      </ng-template>
+    </div>
+</div>

@@ -5,6 +5,6 @@ export class AppStateModel {
   public searchResults: GoogleBook[];
   public username: string;
   public wishlist: GoogleBook[];
-  public isLoading: Boolean = false;
+  public isLoading: Boolean;
   public selectedBook: GoogleBook;
 }

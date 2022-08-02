@@ -49,8 +49,19 @@
       }
     }
     .more-info-button {
-      width: 2%;
-      float: left;
-    }
+      width: 1%;
+        float: left;
+        margin: -8px;
+        border: none;
+      button{
+        &:hover, &:focus &:active{
+          background-color: transparent;
+          border-color: transparent;
+          color: transparent;
+          font-weight: 800;
+          text-shadow: 1px 1px aqua, 1px 1px blueviolet;
+        }
+      }
+      }
   }
 }

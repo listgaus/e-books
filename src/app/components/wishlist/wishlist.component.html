@@ -1,5 +1,8 @@
+<div class="d-flex justify-content-center">
+<h2 class="m-2">This is your wishlist, {{name$ | async}}</h2>
+</div>
 <div class="wishlist">
-  <div class="book" *ngFor="let book of books$ | async">
-    <app-book *ngIf="book !== null" [book]="book"></app-book>
+  <div class="book" *ngFor="let book of wishlist$ | async">
+    <app-book [book]="book" [isWishlist]="true" (removeBook)="RemoveWishlistItem($event)"></app-book>
   </div>
 </div>

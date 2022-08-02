@@ -16,25 +16,28 @@ export class SetLoadingState {
   }
 }
 export class SearchBooks {
-  static readonly type = '[AppState] Setting books from api';
+  static readonly type = '[AppState] Getting books from api';
   constructor(public searchTerm: string) {}
 }
 export class setSelectedBook {
-  static readonly type = '[AppState] Setting books from api';
+  static readonly type = '[AppState] Updating selected book';
   constructor(public book: GoogleBook | undefined) {}
 }
-export class AddToWishlist {
-  static readonly type = '[AppState] Adding selected book to whishlist';
+export class AddWishlistItem {
+  static readonly type = '[AppState] Adding selected book to the whishlist';
 }
 export class RemoveFromWishlist {
-  static readonly type = '[AppState] Adding selected book to whishlist';
-  constructor(public bookToRemove: GoogleBook) {
-  }
+  static readonly type = '[AppState] Removing book from the whishlist';
 }
+
 export class ClearSearchResults {
   static readonly type = '[AppState] Clearing search results';
 }
 
-export class InitializeState {
-  static readonly type = '[AppState] Clearing search results';
+export class RemoveWishlistItem {
+  static readonly type = '[AppState] removing selected book item from whishlist';
+  constructor(public bookId: string) {
+  }
 }
+
+
