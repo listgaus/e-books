@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {GoogleBook} from "../../../assets/models/data-model";
+import {GoogleBook} from "../../../../../assets/models/data-model";
 import {Observable} from "rxjs";
 
 @Component({

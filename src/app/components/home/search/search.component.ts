@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {Select, Store} from "@ngxs/store";
-import {AppState} from "../../store/app.state";
+import {AppState} from "../../../store/app.state";
 import {distinctUntilChanged, Observable, share} from "rxjs";
-import {GoogleBook} from "../../../assets/models/data-model";
+import {GoogleBook} from "../../../../assets/models/data-model";
 import {
   AddWishlistItem,
   ClearSearchResults, SearchBooks,
   SetLoadingState,
   SetSearchValue,
   setSelectedBook
-} from "../../store/app.actions";
+} from "../../../store/app.actions";
 
 @Component({
   selector: 'app-search',

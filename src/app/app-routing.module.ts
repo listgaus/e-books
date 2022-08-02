@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {WelcomeComponent} from "./components/welcome/welcome.component";
 import {HomeComponent} from "./components/home/home.component";
-import {SearchComponent} from "./components/search/search.component";
-import {WishlistComponent} from "./components/wishlist/wishlist.component";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {SearchComponent} from "./components/home/search/search.component";
+import {WishlistComponent} from "./components/home/wishlist/wishlist.component";
+import {DashboardComponent} from "./components/home/dashboard/dashboard.component";
 
 const routes: Routes = [
   { path: '',

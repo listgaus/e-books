@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {Observable} from "rxjs";
-import {GoogleBook} from "../../../assets/models/data-model";
+import {GoogleBook} from "../../../../assets/models/data-model";
 import {Select, Store} from "@ngxs/store";
-import {AppState} from "../../store/app.state";
-import {RemoveWishlistItem} from "../../store/app.actions";
+import {AppState} from "../../../store/app.state";
+import {RemoveWishlistItem} from "../../../store/app.actions";
 
 @Component({
   selector: 'app-wishlist',

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
 import {Observable, take} from "rxjs";
-import {GoogleBook} from "../../../assets/models/data-model";
+import {GoogleBook} from "../../../../../assets/models/data-model";
 import {BsModalRef, BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
