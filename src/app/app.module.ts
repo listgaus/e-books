@@ -19,11 +19,11 @@ import {TitlePipe} from "./pipes/capitalize-title/capitalize-title.pipe";
 import {ApiService} from "./services/api.service";
 import {HttpClientModule} from "@angular/common/http";
 import {NgxsStoragePluginModule} from "@ngxs/storage-plugin";
-import {PaginationModule} from "ngx-bootstrap/pagination";
 import {BsModalService, ModalModule} from "ngx-bootstrap/modal";
 import { BookInfoComponent } from './components/home/search/book-info/book-info.component';
 import { SearchComponent } from './components/home/search/search.component';
 import { DashboardComponent } from './components/home/dashboard/dashboard.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { DashboardComponent } from './components/home/dashboard/dashboard.compon
     NgxsStoragePluginModule.forRoot({
       key: 'state'
     }),
-    PaginationModule.forRoot(),
+    NgxPaginationModule,
     ModalModule,
     BrowserModule,
     AppRoutingModule,

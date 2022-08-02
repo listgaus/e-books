@@ -15,6 +15,7 @@ export class BooksListComponent {
   @Output() addWishlistItem: EventEmitter<void> = new EventEmitter()
   @Output() updateSelectedBook: EventEmitter<GoogleBook> = new EventEmitter<GoogleBook>()
   modalRef?: BsModalRef;
+  page: number = 1;
   config = {
     animated: true,
     class: 'modal-lg book-modal'
